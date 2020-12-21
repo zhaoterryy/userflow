@@ -1,0 +1,32 @@
+{
+  "name": "mernwebsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.3.0",
+    "config": "^3.3.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.8",
+    "nodemon": "^2.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aroesec/userflow.git"
+  },
+  "author": "aroesec",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aroesec/userflow/issues"
+  },
+  "homepage": "https://github.com/aroesec/userflow#readme"
+}
