@@ -12,5 +12,6 @@ app.get("/", (req, res) => {
   res.send("app running");
 });
 app.use("/api/posts", require("./routes/api/posts"));
+app.use("/api/users", require("./routes/api/users"));
 
 app.listen(port, () => console.log(`App listening on port ${port}`));
