@@ -1,5 +1,4 @@
-const mongoose = require("mongooose");
-const { mongo } = require("mongoose");
+const mongoose = require("mongoose");
 const { stringify } = require("uuid");
 
 const ProfileScehma = new mongoose.Schema({
@@ -18,9 +17,11 @@ const ProfileScehma = new mongoose.Schema({
   },
   status: {
     type: String,
+    required:true,
   },
   skills: {
     type: [String],
+    required:true,
   },
   githubusername: {
     type: String,
@@ -73,10 +74,11 @@ const ProfileScehma = new mongoose.Schema({
     instagram: {
       type: String,
     },
-    date: {
-      type: Date,
-      default: Date.now,
-    },
+    
+  },
+  date: {
+    type: Date,
+    default: Date.now,
   },
 });
 

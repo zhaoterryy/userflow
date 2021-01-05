@@ -6,7 +6,7 @@ const router = express.Router();
 const config = require("config");
 const Bcrypt = require("bcryptjs");
 
-// @route POST api/users
+// @route POST api/users400
 // @description Register User
 // @access Public
 // @aroesec TODO may need to add more password complexity with custom rules
