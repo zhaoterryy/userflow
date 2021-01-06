@@ -1,5 +1,7 @@
 const express = require("express");
 const connectDB = require("./config/db");
+const cors = require("cors");
+
 
 const app = express();
 const port = process.env.port || 8080;
@@ -14,5 +16,6 @@ app.get("/", (req, res) => {
 app.use("/api/posts", require("./routes/api/posts"));
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/profile", require("./routes/api/profile"))
+app.use("/api/dashboard", require("./routes/api/dashboard"))
 
 app.listen(port, () => console.log(`App listening on port ${port}`));
