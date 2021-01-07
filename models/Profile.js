@@ -17,11 +17,11 @@ const ProfileSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    required:true,
+    required: true,
   },
   skills: {
     type: [String],
-    required:true,
+    required: true,
   },
   githubusername: {
     type: String,
@@ -74,7 +74,6 @@ const ProfileSchema = new mongoose.Schema({
     instagram: {
       type: String,
     },
-    
   },
   date: {
     type: Date,
