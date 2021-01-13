@@ -1,29 +1,23 @@
-import React from 'react';
-const testFetch = () =>{
-constructor(props) {
-  super(props);
-  this.state = { apiResponse: "" };
-}
+import { json } from "body-parser";
+import React, { useState, useEffect } from "react";
+const TestFetch = (props) => {
+  // With function components you MUST use hooks
+  const [apiResponse, setApiResponse] = useState("");
+  const callAPI = async () => await fetch("http://localhost:8080/api/users");
 
-callAPI() {
-  fetch("http://localhost:8080/users")
-      .then(res => res.text())
-      .then(res => this.setState({ apiResponse: res }));
-}
+  // Component mount functions don't exist anymore, you must use an effect
+  useEffect(async () => {
+    const res = await callAPI();
+    const text = await res.text();
+    setApiResponse(text);
+  }, []);
 
-componentWillMount() {
-  this.callAPI();
-}
-
-
-return(
-  <div> 
-  <p></p>
-
-  </div>
-  
-
-)
-
+  return (
+    <div>
+      <h1>Welcome to aroe's website</h1>
+      <p>{apiResponse}</p>
+    </div>
+  );
 };
-export default testFetch;
+
+export default TestFetch;
