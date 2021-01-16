@@ -1,35 +1,74 @@
-import React from "react";
-import { Form, Field, withFormik } from "formik";
-import * as yup from "yup";
 
-const LoginWrapper = Login;
+import { withFormik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+import React,{ useEffect, useState } from 'react';
 
-const LoginValidation = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup
-    .string()
-    .min(12)
-    .matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]$")
-    .required(),
-});
+const LoginPage = (props) => {
+  const loginPageStyle = {
+    margin: "32px auto 37px",
+    maxWidth: "530px",
+    background: "#fff",
+    padding: "30px",
+    borderRadius: "10px",
+    boxShadow: "0px 0px 10px 10px rgba(0,0,0,0.15)",
 
-export default withFormik(
-  {
-    handleSubmit: (values, { setSubmitting }) => {
-      console.log("Submitted Email :", values.email);
-      console.log("Submitted Password : ", values.password);
-      setTimeout(() => setSubmitting(false), 3 * 1000);
-    },
-    validationSchema: LoginValidation,
-  }(LoginWrapper)
-);
+  };
+  const { touched, errors } = props;
+  return(
+    <React.Fragment>
+      <div className="container">
+        <div className="login-wrapper" style={loginPageStyle}>
+          <h2>Login Page</h2>
+          <Form className="form-container">
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <Field type="text" name="email" className={"form-control"} placeholder="Email" />
+              { touched.email && errors.email && <span className="help-block text-danger">{errors.email}</span> }
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <Field type="password" name="password" className={"form-control"} placeholder="Password" />
+              { touched.password && errors.password && <span className="help-block text-danger">{errors.password}</span> }
+            </div>
+            <button type="submit" className="btn btn-primary">Login</button>
+          </Form>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+}
 
-return (
-  <Form>
-    <Field type="text" name="email" placeholder="email" />
-    <ErrorMessage name="email" />
-    <Field type="text" name="password" placeholder="password" />
-    <ErrorMessage name="password" />
-    <button type="submit"> Submit </button>
-  </Form>
-);
+const LoginFormik = withFormik({
+  mapPropsToValues: (props) => {
+    return {
+      email: props.email || '',
+      password: props.password || ''
+    }
+  },
+  validationSchema: Yup.object().shape({
+    email: Yup.string().email('Email not valid').required('Email is required'),
+    password: Yup.string().required('Password is required')
+  }),
+  handleSubmit: (values) => {
+    const restApi = "http://localhost:8080/api/users";
+    fetch(restApi, {
+      method: 'post',
+      body: JSON.stringify(values)
+    }).then(response=> {
+      if (response.ok) {
+        return response.json();
+      } else {
+        // HANDLE ERROR
+        throw new Error('Something went wrong');
+      }
+    }).then(data => {
+      // HANDLE RESPONSE DATA
+      console.log(data);
+    }).catch((error) => {
+      // HANDLE ERROR
+      console.log(error);
+    });
+  }
+})(LoginPage);
+
+export default LoginFormik
