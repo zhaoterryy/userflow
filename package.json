@@ -23,14 +23,16 @@
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "styled-button-component": "^4.0.0",
+    "styled-navbar-component": "^4.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {},
   "scripts": {
     "start": "node server",
     "server": "nodemon server",
-    "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\""
+    "client": "concurrently \"cd frontend \" \"npm start --prefix frontend\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",

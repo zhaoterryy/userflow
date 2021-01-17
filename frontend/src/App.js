@@ -1,16 +1,20 @@
-import './App.css';
-import Login from './Pages/Login/Login'
-import TestFetch from './TestFetch'
-import Registration from './Pages/Registration/Registration';
+// import Login from "./components/Login/Login";
+import NavbarPage from "./components/layout/Navbar";
+import LandingPage from "./components/layout/Landing";
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import Registration from "./Components/Registration/Registration";
+import React, { Fragment } from "react";
 
 function App() {
-    return (
-        <div>
-        <Login /><TestFetch /><Registration />
-          </div>
-  
-      
-    );
-  }
+  return (
+    <Router>
+      <Fragment>
+        <NavbarPage />
+        <Route exact path="/" component={LandingPage} />
+      </Fragment>
+    </Router>
+  );
+}
 
 export default App;
