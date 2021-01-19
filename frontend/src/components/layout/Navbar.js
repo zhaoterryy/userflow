@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Button } from "styled-button-component";
 import { Navbar, NavbarLink } from "styled-navbar-component";
-import { Nav } from "styled-nav-component";
+import { Nav } from "styled-nav-component"; 
 const NavbarPage = () => {
   const [hidden, setHidden] = useState(true);
   return (
     <Navbar expandSm light>
       <Nav start>
-        <NavbarLink light brand href="#">
+        <NavbarLink light brand href="/">
           Home
         </NavbarLink>
         <Nav end>
@@ -23,16 +23,16 @@ const NavbarPage = () => {
         </Nav>
       </Nav>
       <Nav start collapse expandSm hidden={hidden}>
-        <NavbarLink light active>
+        <NavbarLink light href="/Shop">
           Shop
         </NavbarLink>
-        <NavbarLink light href="#">
+        <NavbarLink light href="/Blog">
           Blog
         </NavbarLink>
-        <NavbarLink light href="#">
+        <NavbarLink light href="/Content">
           Content
         </NavbarLink>
-        <NavbarLink light disabled href="#">
+        <NavbarLink light disabled href="/Forum">
           Forum
         </NavbarLink>
       </Nav>
