@@ -1,6 +1,5 @@
-//TODO may need to add links to components where html is ref'd for register + login
 import React from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
@@ -14,10 +13,10 @@ const LandingPage = () => {
               and Technology Enthusiast.
             </p>
             <div className="buttons">
-              <Link to ='/Register' className="btn btn-primary">
+              <Link to="/Register" className="btn btn-primary">
                 Sign Up
               </Link>
-              <Link to ='/Login' className="btn btn-light">
+              <Link to="/Login" className="btn btn-light">
                 Login
               </Link>
             </div>
