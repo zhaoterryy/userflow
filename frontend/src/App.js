@@ -9,25 +9,21 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React, { Fragment } from "react";
 
 //below is redux
-import { Provider } from "react-redux"; //connects react and redux
-import store from "./store";
 
 function App() {
   return (
-    <Provider store={store}>
-      <Router>
-        <Fragment>
-          <NavbarPage />
-          <Route exact path="/" component={LandingPage} />
-          <section className="container">
-            <Switch>
-              <Route exact path="/Register" component={Register} />
-              <Route exact path="/Login" component={Login} />
-            </Switch>
-          </section>
-        </Fragment>
-      </Router>
-    </Provider>
+    <Router>
+      <Fragment>
+        <NavbarPage />
+        <Route exact path="/" component={LandingPage} />
+        <section className="container">
+          <Switch>
+            <Route exact path="/Register" component={Register} />
+            <Route exact path="/Login" component={Login} />
+          </Switch>
+        </section>
+      </Fragment>
+    </Router>
   );
 }
 
