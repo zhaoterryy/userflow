@@ -1,3 +1,4 @@
+const slugify = require('slugify')
 const mongoose = require("mongoose");
 
 const BlogSchema = new mongoose.Schema({
@@ -10,6 +11,7 @@ const BlogSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now, required: true },
 });
 
+ 
 const Post = mongoose.model("blog", BlogSchema);
 
 module.exports = Post;
